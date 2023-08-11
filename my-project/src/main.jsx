@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -11,7 +11,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 //Camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(5, 3.5, 5);
+camera.position.set(5.5, 3, 6);
 
 
 
@@ -48,28 +48,6 @@ const target = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), new THREE.Me
 target.position.set(0, 1, 0)
 scene.add(target)
 
-// //Target 2: 
-// const target2 = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), new THREE.MeshStandardMaterial({ color: 0xFF6349, wireframe: false }))
-// target2.position.set(-5, 2.5, -0.5)
-// scene.add(target2)
-
-// //Target 3: 
-// const target3 = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), new THREE.MeshStandardMaterial({ color: 0xFF6349, wireframe: false }))
-// target3.position.set(-5, 2.5, -0.5)
-// scene.add(target3)
-
-// //Target 4: 
-// const target4 = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), new THREE.MeshStandardMaterial({ color: 0xFF6347, wireframe: false }))
-// target4.position.set(-5, 1, 3)
-// scene.add(target4)
-
-// //Target 5: 
-// const target5 = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), new THREE.MeshStandardMaterial({ color: 0xFF6347, wireframe: false }))
-// target5.position.set(0, 1, 0)
-// scene.add(target5)
-
-
-
 
 //Add a light to the scene:
 const pointLight = new THREE.PointLight(0xffffff);
@@ -102,8 +80,10 @@ gltfLoader.load('../public/bedroomToExport.gltf', (gltfscene) => {
 const animate = (t) => {
   TWEEN.update(t);
   requestAnimationFrame(animate);
-  camera.lookAt(target.position)
+  camera.lookAt(target.position);
+  camera.position.set(camera.position.x, camera.position.y, camera.position.z);
   renderer.render(scene, camera);
+  // console.log('camera position', camera.position);
 }
 animate();
 
@@ -117,6 +97,7 @@ const tweenLaptop = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
   .easing(TWEEN.Easing.Exponential.InOut)
   .repeat(0)
   .delay(10);
+
 
 const tweenShelf = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
   .to({ x: -2, y: 3.8, z: -0.5 }, 3000)
@@ -153,8 +134,42 @@ const tweenDrawer = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
   .delay(10);
 
 
+
+  const cameraReset = () => {
+
+    const tweenReset = new TWEEN.Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
+    .to({ x: 5.5, y: 3, z: 6 }, 1500)
+    .onUpdate((coords) => {
+      camera.position.x = coords.x
+      camera.position.y = coords.y
+      camera.position.z = coords.z
+    })
+    .easing(TWEEN.Easing.Exponential.InOut)
+    .repeat(0)
+    .delay(10);
+
+    const tweenTarget = new TWEEN.Tween({ x: target.position.x, y: target.position.y, z: target.position.z })
+    .to({ x: 0, y: 1, z: 0}, 1500)
+    .onUpdate((coords) => {
+      target.position.x = coords.x
+      target.position.y = coords.y
+      target.position.z = coords.z
+    })
+    .easing(TWEEN.Easing.Exponential.InOut)
+    .repeat(0)
+    .delay(10);
+
+    tweenReset.start();
+    tweenTarget.start();
+
+    return;
+  }
+  
+
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App mainCamera={camera} target={target} tweenLaptop={tweenLaptop} tweenShelf={tweenShelf} tweenMe={tweenMe} tweenDrawer={tweenDrawer} />
+    <App mainCamera={camera} target={target} tweenLaptop={tweenLaptop} tweenShelf={tweenShelf} tweenMe={tweenMe} tweenDrawer={tweenDrawer}  cameraReset={cameraReset} />
   </React.StrictMode>,
 )

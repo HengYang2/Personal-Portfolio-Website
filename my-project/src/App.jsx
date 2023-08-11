@@ -8,6 +8,7 @@ export default function App(props) {
   const tweenShelf = props.tweenShelf;
   const tweenMe = props.tweenMe;
   const tweenDrawer = props.tweenDrawer;
+
   const mainCamera = props.mainCamera
 
 
@@ -26,7 +27,7 @@ export default function App(props) {
       <div className='bg-blue-500 text-white absolute z-50 w-500 h-500 mt-36' onClick={() => { target.position.set(1, 1, -5); tweenDrawer.start(); console.log('clicked') }}>
         Drawer
       </div>
-      <div className='bg-blue-500 text-white absolute z-50 w-500 h-500 mt-48' onClick={() => { target.position.set(0, 1, 0); mainCamera.position.set(5, 3, 6) }}>
+      <div className='bg-blue-500 text-white absolute z-50 w-500 h-500 mt-48' onClick={() => { props.cameraReset();}}>
         Reset Camera
       </div>
     </>
