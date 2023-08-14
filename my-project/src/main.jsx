@@ -6,6 +6,10 @@ import { easing } from 'maath'
 import * as TWEEN from '@tweenjs/tween.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
+//redux
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
 //UseState
 // const [moveCamera, setMoveCamera] = useState(false);
 
@@ -44,7 +48,7 @@ renderer.render(scene, camera);
 // scene.add(axesHelper)
 
 //Target: 
-const target = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), new THREE.MeshStandardMaterial({ color: 0xFF6347, wireframe: false}).transparent = false)
+const target = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.5, 0.5), new THREE.MeshStandardMaterial({ color: 0xFF6347, wireframe: false }).transparent = false)
 target.position.set(0, 1, 0)
 scene.add(target)
 
@@ -135,9 +139,9 @@ const tweenDrawer = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
 
 
 
-  const cameraReset = () => {
+const cameraReset = () => {
 
-    const tweenReset = new TWEEN.Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
+  const tweenReset = new TWEEN.Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
     .to({ x: 5.5, y: 3, z: 6 }, 1500)
     .onUpdate((coords) => {
       camera.position.x = coords.x
@@ -148,8 +152,8 @@ const tweenDrawer = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
     .repeat(0)
     .delay(10);
 
-    const tweenTarget = new TWEEN.Tween({ x: target.position.x, y: target.position.y, z: target.position.z })
-    .to({ x: 0, y: 1, z: 0}, 1500)
+  const tweenTarget = new TWEEN.Tween({ x: target.position.x, y: target.position.y, z: target.position.z })
+    .to({ x: 0, y: 1, z: 0 }, 1500)
     .onUpdate((coords) => {
       target.position.x = coords.x
       target.position.y = coords.y
@@ -159,17 +163,19 @@ const tweenDrawer = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
     .repeat(0)
     .delay(10);
 
-    tweenReset.start();
-    tweenTarget.start();
+  tweenReset.start();
+  tweenTarget.start();
 
-    return;
-  }
-  
+  return;
+}
+
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App target={target} tweenLaptop={tweenLaptop} tweenShelf={tweenShelf} tweenMe={tweenMe} tweenDrawer={tweenDrawer}  cameraReset={cameraReset} />
+    <Provider store={store}>
+      <App target={target} tweenLaptop={tweenLaptop} tweenShelf={tweenShelf} tweenMe={tweenMe} tweenDrawer={tweenDrawer} cameraReset={cameraReset} />
+    </Provider>
   </React.StrictMode>,
 )

@@ -1,11 +1,18 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from "react-redux";
 import * as THREE from 'three'
 import SelectToFocusScreen from './components/SelectToFocusScreen';
 import FocusedInScreen from './components/FocusedInScreen/FocusedInScreen';
 
+
 export default function App(props) {
 
-  const [isFocused, setIsFocused] = useState(false);
+
+
+  const isFocusedReducer = useSelector(store => store.isFocusedReducer);
+
+
+  // const [isFocused, setIsFocused] = useState(false);
   const [currentView, setCurrentView] = useState('laptop');
 
   const target = props.target;
@@ -18,16 +25,16 @@ export default function App(props) {
 
   //Conditionally render the SelectToFocusScreen or the FocusedInScreen:
   const renderFocusView = () => {
-    if (isFocused == true) {  
-      return <FocusedInScreen setIsFocused={setIsFocused} currentView={currentView}/>
-    }else {
-      return <SelectToFocusScreen setIsFocused={setIsFocused} target={target} tweenLaptop={tweenLaptop} tweenShelf={tweenShelf} tweenMe={tweenMe} tweenDrawer={tweenDrawer} cameraReset={cameraReset} />
+    if (isFocusedReducer == true) {
+      return <FocusedInScreen currentView={currentView} />
+    } else {
+      return <SelectToFocusScreen target={target} tweenLaptop={tweenLaptop} tweenShelf={tweenShelf} tweenMe={tweenMe} tweenDrawer={tweenDrawer} cameraReset={cameraReset} />
     }
   }
 
   return (
     <>
-    {renderFocusView()}
-   </>
+      {renderFocusView()}
+    </>
   )
 }

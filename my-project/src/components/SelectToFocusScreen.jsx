@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector, useDispatch } from "react-redux";
 
 //The purpose of this component is to display invisible divs over parts of the room;
 //Which when clicked zooms the camera to focus in on that thing. Ex: the Shelf.
@@ -11,7 +12,12 @@ export default function SelectToFocusScreen(props) {
     const tweenDrawer = props.tweenDrawer;
 
     const cameraReset = props.cameraReset;
-    const setIsFocused = props.setIsFocused;
+    // const setIsFocused = props.setIsFocused;
+    const dispatch = useDispatch();
+    const setIsFocused = (bool) => {
+        dispatch({ type: 'SET_IS_FOCUSED',  payload: bool });
+        return;
+    }
 
     return (
         <div className=' flex flex-row justify-center items-center gap-1 pb-16 bg-red-200 w-full h-full z-10 opacity-20'>

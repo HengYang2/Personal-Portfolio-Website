@@ -8,7 +8,8 @@ import DrawerView from './FocusViews/DrawerView'
 
 export default function FocusedInScreen(props) {
 
-  const setIsFocused = props.setIsFocused;
+  // const setIsFocused = props.setIsFocused;
+  
   const currentView = props.currentView
 
   //Conditionally render views based on passed (currentView) prop:
