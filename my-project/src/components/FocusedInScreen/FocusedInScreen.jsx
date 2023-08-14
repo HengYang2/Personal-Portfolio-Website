@@ -34,8 +34,8 @@ export default function FocusedInScreen(props) {
 
 
   return (
-    <div className='w-full h-full text-white opacity-100'>
+    <>
       {renderCurrentView()}
-    </div>
+    </>
   )
 }
