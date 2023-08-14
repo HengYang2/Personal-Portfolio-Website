@@ -170,6 +170,6 @@ const tweenDrawer = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App mainCamera={camera} target={target} tweenLaptop={tweenLaptop} tweenShelf={tweenShelf} tweenMe={tweenMe} tweenDrawer={tweenDrawer}  cameraReset={cameraReset} />
+    <App target={target} tweenLaptop={tweenLaptop} tweenShelf={tweenShelf} tweenMe={tweenMe} tweenDrawer={tweenDrawer}  cameraReset={cameraReset} />
   </React.StrictMode>,
 )
