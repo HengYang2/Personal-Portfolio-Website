@@ -4,28 +4,27 @@ import LaptopView from './FocusViews/LaptopView'
 import ShelfView from './FocusViews/ShelfView'
 import MeView from './FocusViews/MeView'
 import DrawerView from './FocusViews/DrawerView'
+import { useSelector } from 'react-redux'
 
 
 export default function FocusedInScreen(props) {
 
-  // const setIsFocused = props.setIsFocused;
-  
-  const currentView = props.currentView
+  const currentViewReducer = useSelector(store => store.currentViewReducer);
 
   //Conditionally render views based on passed (currentView) prop:
   const renderCurrentView = () => {
-    switch (currentView) {
+    switch (currentViewReducer) {
       case 'laptop':
-        return <LaptopView/>;
+        return <LaptopView camera={props.camera} target={props.target} />;
         break;
       case 'shelf':
-        return <ShelfView/>;
+        return <ShelfView camera={props.camera} target={props.target} />;
         break;
       case 'me':
-        return <MeView/>;
+        return <MeView camera={props.camera} target={props.target} />;
         break;
       case 'drawer':
-        return <DrawerView/>;
+        return <DrawerView camera={props.camera} target={props.target} />;
         break;
       default:
         console.log("Error: Unknown currentView prop passed in.")

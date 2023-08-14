@@ -85,97 +85,16 @@ const animate = (t) => {
   TWEEN.update(t);
   requestAnimationFrame(animate);
   camera.lookAt(target.position);
-  camera.position.set(camera.position.x, camera.position.y, camera.position.z);
   renderer.render(scene, camera);
   // console.log('camera position', camera.position);
 }
 animate();
 
-const tweenLaptop = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
-  .to({ x: -2, y: 2.5, z: 3 }, 3000)
-  .onUpdate((coords) => {
-    camera.position.x = coords.x
-    camera.position.y = coords.y
-    camera.position.z = coords.z
-  })
-  .easing(TWEEN.Easing.Exponential.InOut)
-  .repeat(0)
-  .delay(10);
-
-
-const tweenShelf = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
-  .to({ x: -2, y: 3.8, z: -0.5 }, 3000)
-  .onUpdate((coords) => {
-    camera.position.x = coords.x
-    camera.position.y = coords.y
-    camera.position.z = coords.z
-  })
-  .easing(TWEEN.Easing.Exponential.InOut)
-  .repeat(0)
-  .delay(10);
-
-const tweenMe = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
-  .to({ x: -1.3, y: 2.5, z: 1 }, 3000)
-  .onUpdate((coords) => {
-    camera.position.x = coords.x
-    camera.position.y = coords.y
-    camera.position.z = coords.z
-  })
-  .easing(TWEEN.Easing.Exponential.InOut)
-  .repeat(0)
-  .delay(10);
-
-
-const tweenDrawer = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
-  .to({ x: 1, y: 3.5, z: -1.5 }, 3000)
-  .onUpdate((coords) => {
-    camera.position.x = coords.x
-    camera.position.y = coords.y
-    camera.position.z = coords.z
-  })
-  .easing(TWEEN.Easing.Exponential.InOut)
-  .repeat(0)
-  .delay(10);
-
-
-
-const cameraReset = () => {
-
-  const tweenReset = new TWEEN.Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
-    .to({ x: 5.5, y: 3, z: 6 }, 1500)
-    .onUpdate((coords) => {
-      camera.position.x = coords.x
-      camera.position.y = coords.y
-      camera.position.z = coords.z
-    })
-    .easing(TWEEN.Easing.Exponential.InOut)
-    .repeat(0)
-    .delay(10);
-
-  const tweenTarget = new TWEEN.Tween({ x: target.position.x, y: target.position.y, z: target.position.z })
-    .to({ x: 0, y: 1, z: 0 }, 1500)
-    .onUpdate((coords) => {
-      target.position.x = coords.x
-      target.position.y = coords.y
-      target.position.z = coords.z
-    })
-    .easing(TWEEN.Easing.Exponential.InOut)
-    .repeat(0)
-    .delay(10);
-
-  tweenReset.start();
-  tweenTarget.start();
-
-  return;
-}
-
-
-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App target={target} tweenLaptop={tweenLaptop} tweenShelf={tweenShelf} tweenMe={tweenMe} tweenDrawer={tweenDrawer} cameraReset={cameraReset} />
+      <App target={target} camera={camera}/>
     </Provider>
   </React.StrictMode>,
 )

@@ -10,25 +10,14 @@ export default function App(props) {
 
 
   const isFocusedReducer = useSelector(store => store.isFocusedReducer);
-
-
-  // const [isFocused, setIsFocused] = useState(false);
-  const [currentView, setCurrentView] = useState('laptop');
-
-  const target = props.target;
-  const tweenLaptop = props.tweenLaptop;
-  const tweenShelf = props.tweenShelf;
-  const tweenMe = props.tweenMe;
-  const tweenDrawer = props.tweenDrawer;
-
-  const cameraReset = props.cameraReset;
+  const currentViewReducer = useSelector(store => store.currentViewReducer);
 
   //Conditionally render the SelectToFocusScreen or the FocusedInScreen:
   const renderFocusView = () => {
     if (isFocusedReducer == true) {
-      return <FocusedInScreen currentView={currentView} />
+      return <FocusedInScreen currentView={currentViewReducer} camera={props.camera} target={props.target} />
     } else {
-      return <SelectToFocusScreen target={target} tweenLaptop={tweenLaptop} tweenShelf={tweenShelf} tweenMe={tweenMe} tweenDrawer={tweenDrawer} cameraReset={cameraReset} />
+      return <SelectToFocusScreen camera={props.camera} target={props.target} />
     }
   }
 

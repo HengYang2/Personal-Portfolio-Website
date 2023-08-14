@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 // import errors from './errors.reducer';
 // import user from './user.reducer';
 import isFocusedReducer from './isFocusedReducer';
+import currentViewReducer from './currentViewReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -11,6 +12,7 @@ import isFocusedReducer from './isFocusedReducer';
 // This is what we get when we use 'state' inside of 'mapStateToProps'
 const rootReducer = combineReducers({
     isFocusedReducer,
+    currentViewReducer,
 });
 
 export default rootReducer;
