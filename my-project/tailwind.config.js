@@ -17,6 +17,12 @@ export default {
         101: '845px',
         102: '445px',
       },
+      width: {
+        999: '30px'
+      },
+      height: {
+        999: '30px'
+      },
       keyframes: {
         upDown1: {
           '0%': { transform: 'translateY(0px)' },

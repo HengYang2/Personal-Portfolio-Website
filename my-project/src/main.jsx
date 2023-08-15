@@ -10,16 +10,9 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
-//UseState
-// const [moveCamera, setMoveCamera] = useState(false);
-
 //Camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(5.5, 3, 6);
-
-
-
-
 
 
 import * as THREE from 'three'
@@ -30,6 +23,11 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 //Scene - like a containter that holds all objects, cameras and lights
 const scene = new THREE.Scene();
 
+//Load background:
+const backgroundTexture = new THREE.TextureLoader().load('../public/backgroundTexture.jpg');
+scene.background = backgroundTexture;
+scene.backgroundIntensity = 0.2;
+scene.backgroundBlurriness = 0.9;
 
 
 
@@ -67,8 +65,8 @@ scene.add(pointLight, ambientLight);
 const lightHelper = new THREE.PointLightHelper(pointLight);
 scene.add(lightHelper);
 //Grid helper creates a 2D grid:
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(gridHelper)
+// const gridHelper = new THREE.GridHelper(200, 50);
+// scene.add(gridHelper)
 
 
 //Room Model:
@@ -94,7 +92,7 @@ animate();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App target={target} camera={camera}/>
+      <App target={target} camera={camera} />
     </Provider>
   </React.StrictMode>,
 )

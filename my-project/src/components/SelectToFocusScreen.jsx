@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
 import cameraTween from '../tween/cameraTween';
 
 //The purpose of this component is to display invisible divs over parts of the room;
 //Which when clicked zooms the camera to focus in on that thing. Ex: the Shelf.
 export default function SelectToFocusScreen(props) {
+
+    const setDivId = props.setDivId;
+
 
     const dispatch = useDispatch();
     const setIsFocused = (bool) => {
@@ -16,24 +19,26 @@ export default function SelectToFocusScreen(props) {
         return;
     }
 
+
+
     return (
         <div className=' flex flex-row justify-center items-center gap-1 pb-16 w-full h-full z-10'>
 
-            <div className='z-20 w-24 h-44 -ml-12' onClick={() => { setIsFocused(true); setCurrentView('laptop'); cameraTween(props.camera, props.target, 'laptop'); }}>
-                {/* Laptop */}
+            <div id="laptop" className='z-20 w-24 h-44 -ml-12' onMouseEnter={ (e) => {setDivId("Get In Touch")}} onMouseLeave={ (e) => {setDivId("")}}  onClick={() => { setIsFocused(true); setCurrentView('laptop'); cameraTween(props.camera, props.target, 'laptop'); }}>
+               
             </div>
-            <div className='z-50 w-24 h-44' onClick={() => { setIsFocused(true); setCurrentView('shelf'); cameraTween(props.camera, props.target, 'shelf'); }}>
-                {/* Shelf */}
+            <div id="shelf" className='z-50 w-24 h-44 ' onMouseEnter={ (e) => {setDivId("Portfolio")}} onMouseLeave={ (e) => {setDivId("")}} onClick={() => { setIsFocused(true); setCurrentView('shelf'); cameraTween(props.camera, props.target, 'shelf'); }}>
+
             </div>
-            <div className='z-50 w-24 h-44 ' onClick={() => { setIsFocused(true); setCurrentView('me'); cameraTween(props.camera, props.target, 'me'); }}>
-                {/* Me */}
+            <div id="me"  className='z-50 w-24 h-44 ' onMouseEnter={ (e) => {setDivId("About Me")}} onMouseLeave={ (e) => {setDivId("")}} onClick={() => { setIsFocused(true); setCurrentView('me'); cameraTween(props.camera, props.target, 'me'); }}>
+
             </div>
-            <div className='z-50 w-24 h-44 mr-6' onClick={() => { setIsFocused(true); setCurrentView('drawer'); cameraTween(props.camera, props.target, 'drawer'); }}>
-                {/* Drawer */}
+            <div  id="drawer" className='z-50 w-24 h-44 mr-6 ' onMouseEnter={ (e) => {setDivId("Misc")}} onMouseLeave={ (e) => {setDivId("")}} onClick={() => { setIsFocused(true); setCurrentView('drawer'); cameraTween(props.camera, props.target, 'drawer'); }}>
+
             </div>
-            {/* <div className='bg-blue-500 text-white  z-50 w-500 h-500' onClick={() => { cameraReset(); }}>
-                Reset Camera
-            </div> */}
         </div>
     )
 }
+
+                // {/* Drawer */}<span className='icon-tooltip group-hover:animate-upDown1'>Misc</span>
+                // transition-0.5 -translate-x-1/2 -translate-y-1/2 border-b m-0 p-0 animate-upDown1 pointer-events-none
