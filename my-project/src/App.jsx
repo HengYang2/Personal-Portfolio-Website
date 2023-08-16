@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import * as THREE from 'three'
 import SelectToFocusScreen from './components/SelectToFocusScreen';
@@ -7,6 +7,13 @@ import { degToRad } from 'three/src/math/MathUtils';
 
 
 export default function App(props) {
+
+  let greenBook = props.greenBook;
+  // const [greenBook, setGreenBook] = useState(props.greenBook);
+
+  // useEffect(() => {
+  //   console.log(greenBook);
+  // },[greenBook]);
 
   const [divId, setDivId] = useState("About Me")
   // const [tempObject, setTempObject] = useState("")
@@ -81,7 +88,9 @@ export default function App(props) {
 
   return (
     <>
+      <canvas id="bg" class="z-50 fixed w-full h-full "></canvas>
       {renderFocusView()}
     </>
   )
 }
+// setGreenBook={props.setGreenBook}

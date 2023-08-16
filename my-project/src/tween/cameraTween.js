@@ -42,7 +42,7 @@ export default function cameraTween(camera, target, selectedTarget) {
   const tweenShelf = () => {
 
     const tweenCamera = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
-      .to({ x: -2.5, y: 3.8, z: -0.5 }, 3000)
+      .to({ x: -2.5, y: 3.8, z: -0.64 }, 3000)
       .onUpdate((coords) => {
         camera.position.x = coords.x
         camera.position.y = coords.y
@@ -53,7 +53,7 @@ export default function cameraTween(camera, target, selectedTarget) {
       .delay(10);
 
     const tweenTarget = new TWEEN.Tween({  x: target.position.x, y: target.position.y, z: target.position.z })
-      .to({ x: -6, y: 2, z: -0.5}, 3000)
+      .to({ x: -6, y: 2, z: -0.64}, 3000)
       .onUpdate((coords) => {
         target.position.x = coords.x
         target.position.y = coords.y
