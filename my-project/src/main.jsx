@@ -88,11 +88,29 @@ const animate = (t) => {
 }
 animate();
 
+// //RAY CASTING:
+// const pointer = new THREE.Vector2();
+// const raycaster = new THREE.Raycaster();
+
+// //Window event listener on mouse move:
+// const onMouseMove = (event) => {
+//   pointer.x = (event.clientX / window.innerWidth) *2 -1;
+//   pointer.y = -(event.clientY / window.innerHeight) *2 +1;
+
+//   raycaster.setFromCamera(pointer, camera);
+//   const intersects = raycaster.intersectObjects(scene.children);
+
+//   for (let i = 0; i < intersects.length; i++ ) {
+//     console.log(intersects)
+//   }
+// }
+// window.addEventListener("mouseMove", onMouseMove);
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App target={target} camera={camera} />
+      <App target={target} camera={camera} scene={scene} />
     </Provider>
   </React.StrictMode>,
 )

@@ -3,25 +3,50 @@ import { useSelector, useDispatch } from "react-redux";
 import * as THREE from 'three'
 import SelectToFocusScreen from './components/SelectToFocusScreen';
 import FocusedInScreen from './components/FocusedInScreen/FocusedInScreen';
+import { degToRad } from 'three/src/math/MathUtils';
 
 
 export default function App(props) {
 
   const [divId, setDivId] = useState("About Me")
+  // const [tempObject, setTempObject] = useState("")
 
+  //RAY CASTING:
+  // const pointer = new THREE.Vector2();
+  // const raycaster = new THREE.Raycaster();
+
+
+  //Window event listener on mouse move:
 
   const isFocusedReducer = useSelector(store => store.isFocusedReducer);
   const currentViewReducer = useSelector(store => store.currentViewReducer);
 
   //For cursor following:
-  window.addEventListener("mousemove", (e) => {
+  window.addEventListener("mousemove", (event) => {
     const cursor = document.getElementById("cursor");
     // const divImOn = cursor.;
     // console.log('coords', e.clientX + " + " + e.clientY )
-    const x = e.clientX;
-    const y = e.clientY;
+    const x = event.clientX;
+    const y = event.clientY;
     cursor.style.left = x + 25 + "px";
     cursor.style.top = y + "px";
+
+
+    //Ray casting:
+    // pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+    // pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    // raycaster.setFromCamera(pointer, props.camera);
+    // const intersects = raycaster.intersectObjects(props.scene.children);
+
+
+    // if (intersects.length > 0) {
+    //   // intersects[0].object.position.set(intersects[0].object.position.x,intersects[0].object.position.y + 0.1,intersects[0].object.position.z);
+    //   if (intersects[0].object.name == "Cylinder076") {
+    //     intersects[0].object.rotation.y += 90;
+    //     console.log("mesh", intersects[0].object.name);
+    //   }
+    // }
   })
 
   const renderToolTip = () => {
