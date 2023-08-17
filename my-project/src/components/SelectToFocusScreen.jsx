@@ -7,12 +7,10 @@ import ReactDom from 'react-dom';
 //Which when clicked zooms the camera to focus in on that thing. Ex: the Shelf.
 export default function SelectToFocusScreen(props) {
 
-
     const setDivId = props.setDivId;
 
-
     const isPortalOpenReducer = useSelector(store => store.isPortalOpenReducer);
-
+    
 
     const dispatch = useDispatch();
     const setIsFocused = (bool) => {

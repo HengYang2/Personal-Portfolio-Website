@@ -9,6 +9,8 @@ import useTypingEffect from '../../../hooks/typingEffect';
 
 export default function MeView(props) {
 
+  const setDivId = props.setDivId
+
   //UseState for toggling talking options:
   const [questionsVisable, setQuestionsVisable] = useState(false)
 
@@ -88,7 +90,7 @@ export default function MeView(props) {
         </div>
 
       </div>
-      <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, '') }}>{"<-"}</button>
+      <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, ''); setDivId(''); }}>{"<-"}</button>
     </>
   )
 }

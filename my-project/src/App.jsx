@@ -40,7 +40,7 @@ export default function App(props) {
       if (isFocusedReducer == true) {
         return (
           <>
-            <FocusedInScreen currentView={currentViewReducer} camera={props.camera} target={props.target} />
+            <FocusedInScreen currentView={currentViewReducer} camera={props.camera} target={props.target} setDivId={setDivId} />
           </>
         )
       } else {

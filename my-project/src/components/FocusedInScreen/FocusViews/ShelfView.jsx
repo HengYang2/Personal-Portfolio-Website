@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
 import cameraTween from '../../../tween/cameraTween';
 import bookTween from '../../../tween/bookTween';
@@ -6,6 +6,7 @@ import trophyTween from '../../../tween/trophyTween';
 
 export default function ShelfView(props) {
 
+  const setDivId = props.setDivId
   const dispatch = useDispatch();
 
   const setIsFocused = (bool) => {
@@ -17,48 +18,71 @@ export default function ShelfView(props) {
     return;
   }
 
+  //For cursor following:
+  window.addEventListener("mousemove", (event) => {
+
+    const cursor = document.getElementById("cursor");
+
+    if (cursor) {
+      // console.log('coords', event.clientX + " + " + event.clientY)
+      const x = event.clientX;
+      const y = event.clientY;
+      cursor.style.left = x + 10 + "px";
+      cursor.style.top = y + "px";
+    } else {
+      return
+    }
+  })
+
+
+  const [hoveredDiv, setHoveredDiv] = useState('');
+
+  const renderToolTip = () => {
+    if (hoveredDiv == '') {
+      return <div id="cursor"></div>
+    } else {
+      return <div id="cursor" className='icon-tooltip'>{hoveredDiv}</div>
+    }
+  }
+
   return (
     <>
-      <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, '') }}>{"<-"}</button>
+      <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, ''); setDivId(''); }}>{"<-"}</button>
       <div className='w-full h-full absolute flex flex-col justify-center items-center'>
-        <div className='w-3/5 h-full  flex flex-col justify-center items-center bg-blue-500 opacity-25 pb-28'>
-          <div className='w-full h-1/2 mt-5 flex flex-row justify-center items-center bg-red-500 opacity-60'>
-            <div className='h-full w-1/5 bg-black' onMouseEnter={(e) => { trophyTween(project1); console.log('entered div');}} onMouseLeave={(e)=>{console.log("left div");}}></div>
-            <div className='h-full w-1/5 bg-green-500' onMouseEnter={(e) => { trophyTween(project2); }}></div>
-            <div className='h-full w-1/5 bg-black' onMouseEnter={(e) => { trophyTween(project3); }}></div>
-            <div className='h-full w-1/5 bg-green-500' onMouseEnter={(e) => { trophyTween(project4); }}></div>
-            <div className='h-full w-1/5 bg-black' onMouseEnter={(e) => { trophyTween(project5); }}></div>
+        <div className='w-3/5 h-full  flex flex-col justify-center items-center opacity-25 pb-28'>
+          <div className='w-full h-1/2 mt-5 flex flex-row justify-center items-center opacity-60'>
+            <div className='h-full w-1/5 ' onMouseEnter={(e) => { trophyTween(project1); setHoveredDiv('Solo Project: Know Your Hours'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+            <div className='h-full w-1/5 ' onMouseEnter={(e) => { trophyTween(project2); setHoveredDiv('In Progress'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+            <div className='h-full w-1/5 ' onMouseEnter={(e) => { trophyTween(project3); setHoveredDiv('In Progress'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+            <div className='h-full w-1/5 ' onMouseEnter={(e) => { trophyTween(project4); setHoveredDiv('In Progress'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+            <div className='h-full w-1/5 ' onMouseEnter={(e) => { trophyTween(project5); setHoveredDiv('In Progress'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
           </div>
-          <div className='w-4/5 h-1/4 mt-5 flex flex-row justify-center items-center gap-12 bg-green-500 opacity-60 pb-8'>
-            <div className='h-full w-60 mt-5 flex flex-row justify-center items-center bg-black opacity-90'>
+          <div className='w-4/5 h-1/4 mt-5 flex flex-row justify-center items-center gap-12 opacity-60 pb-8'>
+            <div className='h-full w-60 mt-5 flex flex-row justify-center items-center opacity-90'>
 
               {/* books passed into bookTween() are global variables that are attached to the 'window' object */}
-              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(blueBook); }}></div>
-              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(greenBook); }}></div>
-              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(redBook); }}></div>
-              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(yellowBook); }}></div>
-              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(orangeBook); }}></div>
-              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(purpleBook); }}></div>
-              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(brownBook); }}></div>
-              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(blackBook); }}></div>
-              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(limeGreenBook); }}></div>
-              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(magentaBook); }}></div>
-              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(pinkBook); }}></div>
-              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(cyanBook); }}></div>
-
+              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(blueBook); setHoveredDiv('React'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(greenBook); setHoveredDiv('Redux / Sagas'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(redBook); setHoveredDiv('Javascript'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(yellowBook); setHoveredDiv('Jquery'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(orangeBook); setHoveredDiv('Node.js'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(purpleBook); setHoveredDiv('Git / Github'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(brownBook); setHoveredDiv('SQL'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(blackBook); setHoveredDiv('Postgres'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(limeGreenBook); setHoveredDiv('Heroku'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(magentaBook); setHoveredDiv('AWS'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(pinkBook); setHoveredDiv('Tailwind CSS'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+              <div className='h-full w-1/12' onMouseEnter={(e) => { bookTween(cyanBook); setHoveredDiv('Three.js'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
 
             </div>
-            <div className='w-1/4 h-full mt-5 flex flex-row justify-center items-center bg-blue-500 opacity-60'>
+            <div className='w-1/4 h-full mt-5 flex flex-row justify-center items-center opacity-60'>
 
             </div>
           </div>
         </div>
       </div>
-
-      {/* <div className='bg-green-500 w-20 h-20' onMouseEnter={() => {  bookTween(window.globalVariable); console.log("Entered Div"); }}> move book</div> */}
-
+      {renderToolTip()}
     </>
-
   )
 }
 

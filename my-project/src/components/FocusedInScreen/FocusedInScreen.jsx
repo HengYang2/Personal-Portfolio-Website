@@ -10,22 +10,23 @@ import ReactDom from 'react-dom'
 
 export default function FocusedInScreen(props) {
 
+  const setDivId = props.setDivId
   const currentViewReducer = useSelector(store => store.currentViewReducer);
 
   //Conditionally render views based on passed (currentView) prop:
   const renderCurrentView = () => {
     switch (currentViewReducer) {
       case 'laptop':
-        return <LaptopView camera={props.camera} target={props.target} />;
+        return <LaptopView camera={props.camera} target={props.target} setDivId={setDivId}/>;
         break;
       case 'shelf':
-        return <ShelfView camera={props.camera} target={props.target} />;
+        return <ShelfView camera={props.camera} target={props.target} setDivId={setDivId}/>;
         break;
       case 'me':
-        return <MeView camera={props.camera} target={props.target} />;
+        return <MeView camera={props.camera} target={props.target} setDivId={setDivId}/>;
         break;
       case 'drawer':
-        return <DrawerView camera={props.camera} target={props.target} />;
+        return <DrawerView camera={props.camera} target={props.target} setDivId={setDivId}/>;
         break;
       default:
         console.log("Error: Unknown currentView prop passed in.")
