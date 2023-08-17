@@ -78,6 +78,8 @@ gltfLoader.load('../public/bedroomMODIFIED.gltf', (gltfscene) => {
 
 //OrbitControls: This listens to DOM events on the mouse and positions the camera accordingly:
 const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+// controls.dampingFactor = 0.05;
 
 
 //ensure tween is running

@@ -65,18 +65,18 @@ export default function SelectToFocusScreen(props) {
     if (isPortalOpenReducer == false) {
         return ReactDom.createPortal(
             <>
-                <div className=' fixed flex flex-row justify-center items-center gap-1 pb-36 w-screen h-screen bg-blue-500 opacity-30'>
+                <div className=' fixed flex flex-row justify-center items-center gap-1 pb-36 w-screen h-screen'>
 
-                    <div id="laptop" className='z-20 w-24 h-44 -ml-12 bg-red-500' onMouseEnter={(e) => { setDivId("Get In Touch") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('laptop'); cameraTween(props.camera, props.target, 'laptop');}}>
-
-                    </div>
-                    <div id="shelf" className='z-50 w-24 h-44 bg-red-500' onMouseEnter={(e) => { setDivId("Portfolio") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('shelf'); cameraTween(props.camera, props.target, 'shelf'); }}>
+                    <div id="laptop" className='z-20 w-24 h-44 -ml-12' onMouseEnter={(e) => { setDivId("Get In Touch") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('laptop'); cameraTween(props.camera, props.target, 'laptop');}}>
 
                     </div>
-                    <div id="me" className='z-50 w-24 h-44 bg-red-500' onMouseEnter={(e) => { setDivId("About Me") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('me'); cameraTween(props.camera, props.target, 'me'); }}>
+                    <div id="shelf" className='z-50 w-24 h-44' onMouseEnter={(e) => { setDivId("Portfolio") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('shelf'); cameraTween(props.camera, props.target, 'shelf'); }}>
 
                     </div>
-                    <div id="drawer" className='z-50 w-24 h-44  bg-red-500' onMouseEnter={(e) => { setDivId("Misc") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('drawer'); cameraTween(props.camera, props.target, 'drawer'); }}>
+                    <div id="me" className='z-50 w-24 h-44' onMouseEnter={(e) => { setDivId("About Me") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('me'); cameraTween(props.camera, props.target, 'me'); }}>
+
+                    </div>
+                    <div id="drawer" className='z-50 w-24 h-44' onMouseEnter={(e) => { setDivId("Misc") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('drawer'); cameraTween(props.camera, props.target, 'drawer'); }}>
 
                     </div>
                 </div>

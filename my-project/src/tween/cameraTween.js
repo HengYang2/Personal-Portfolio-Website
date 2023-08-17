@@ -38,8 +38,8 @@ export default function cameraTween(camera, target, selectedTarget) {
 
   const tweenLaptop = () => {
 
-    const tweenCamera = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
-      .to({ x: -2, y: 2.5, z: 3 }, 3000)
+    const tweenCamera = new TWEEN.Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
+      .to({ x: -2, y: 3.25, z: 2.8 }, 3000)
       .onUpdate((coords) => {
         camera.position.x = coords.x
         camera.position.y = coords.y
@@ -50,7 +50,7 @@ export default function cameraTween(camera, target, selectedTarget) {
       .delay(10);
 
     const tweenTarget = new TWEEN.Tween({ x: target.position.x, y: target.position.y, z: target.position.z })
-      .to({ x: -5, y: 1, z: 3 }, 3000)
+      .to({ x: -5, y: 1, z: 2.8 }, 3000)
       .onUpdate((coords) => {
         target.position.x = coords.x
         target.position.y = coords.y
@@ -67,8 +67,8 @@ export default function cameraTween(camera, target, selectedTarget) {
 
   const tweenShelf = () => {
 
-    const tweenCamera = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
-      .to({ x: -2.5, y: 3.8, z: -0.64 }, 3000)
+    const tweenCamera = new TWEEN.Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
+      .to({ x: -2.5, y: 5, z: -.83}, 3000)
       .onUpdate((coords) => {
         camera.position.x = coords.x
         camera.position.y = coords.y
@@ -79,7 +79,7 @@ export default function cameraTween(camera, target, selectedTarget) {
       .delay(10);
 
     const tweenTarget = new TWEEN.Tween({  x: target.position.x, y: target.position.y, z: target.position.z })
-      .to({ x: -6, y: 2, z: -0.64}, 3000)
+      .to({ x: -6, y: 1.5, z: -.83}, 3000)
       .onUpdate((coords) => {
         target.position.x = coords.x
         target.position.y = coords.y
@@ -97,8 +97,8 @@ export default function cameraTween(camera, target, selectedTarget) {
 
   const tweenMe = () => {
 
-    const tweenCamera = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
-      .to({ x: -1.3, y: 2.5, z: 1 }, 3000)
+    const tweenCamera = new TWEEN.Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
+      .to({ x: -1.4, y: 3.25, z: 1 }, 3000)
       .onUpdate((coords) => {
         camera.position.x = coords.x
         camera.position.y = coords.y
@@ -109,7 +109,7 @@ export default function cameraTween(camera, target, selectedTarget) {
       .delay(10);
 
     const tweenTarget = new TWEEN.Tween({ x: target.position.x, y: target.position.y, z: target.position.z })
-      .to({ x: -1.3, y: 0.5, z: -5 }, 3000)
+      .to({ x: -1.4, y: 0.5, z: -5 }, 3000)
       .onUpdate((coords) => {
         target.position.x = coords.x
         target.position.y = coords.y
@@ -127,8 +127,8 @@ export default function cameraTween(camera, target, selectedTarget) {
 
   const tweenDrawer = () => {
 
-    const tweenCamera = new TWEEN.Tween({ x: 5.5, y: 3, z: 6 })
-    .to({ x: 1, y: 3.5, z: -1.5 }, 3000)
+    const tweenCamera = new TWEEN.Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
+    .to({ x: 1.25, y: 4.5, z: -1.5}, 3000)
     .onUpdate((coords) => {
       camera.position.x = coords.x
       camera.position.y = coords.y
@@ -139,7 +139,7 @@ export default function cameraTween(camera, target, selectedTarget) {
     .delay(10);
 
     const tweenTarget = new TWEEN.Tween({ x: target.position.x, y: target.position.y, z: target.position.z })
-      .to({ x: 1, y: 1, z: -5 }, 3000)
+      .to({ x: 1.25, y: 1, z: -4.5 }, 3000)
       .onUpdate((coords) => {
         target.position.x = coords.x
         target.position.y = coords.y
