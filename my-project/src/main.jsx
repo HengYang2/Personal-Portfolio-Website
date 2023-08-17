@@ -66,12 +66,31 @@ scene.add(pointLight, ambientLight);
 //Room Model:
 const gltfLoader = new GLTFLoader();
 gltfLoader.load('../public/bedroomMODIFIED.gltf', (gltfscene) => {
-  // GLTFSCENE =  gltfscene;
+
   scene.add(gltfscene.scene);
-  // console.log(gltfscene.scene);
-  // window.globalVariable = scene.getObjectByName("Scene").getObjectByName("Cube042");
-  // greenBook = scene.getObjectByName("Scene").getObjectByName("Cube042");
-  // greenBook = scene.getObjectByName("Scene").getObjectByName("Cube042");
+  console.log("gltfscene", scene.getObjectByName("Scene"));
+  //Load in indivdual meshes from the gltfscene.scene and add them as properties
+  //to the global window object, to make the meshes from the scene, global
+  //variables as well.
+  window.blueBook = scene.getObjectByName("Scene").getObjectByName("blueBook");
+  window.greenBook = scene.getObjectByName("Scene").getObjectByName("greenBook");
+  window.redBook = scene.getObjectByName("Scene").getObjectByName("redBook");
+  window.yellowBook = scene.getObjectByName("Scene").getObjectByName("yellowBook");
+  window.orangeBook = scene.getObjectByName("Scene").getObjectByName("orangeBook");
+  window.purpleBook = scene.getObjectByName("Scene").getObjectByName("purpleBook");
+  window.brownBook = scene.getObjectByName("Scene").getObjectByName("brownBook");
+  window.blackBook = scene.getObjectByName("Scene").getObjectByName("blackBook");
+  window.limeGreenBook = scene.getObjectByName("Scene").getObjectByName("limeGreenBook");
+  window.magentaBook = scene.getObjectByName("Scene").getObjectByName("magentaBook");
+  window.pinkBook = scene.getObjectByName("Scene").getObjectByName("pinkBook");
+  window.cyanBook = scene.getObjectByName("Scene").getObjectByName("cyanBook");
+ 
+  window.project1 = scene.getObjectByName("Scene").getObjectByName("project1");
+  window.project2 = scene.getObjectByName("Scene").getObjectByName("project2");
+  window.project3 = scene.getObjectByName("Scene").getObjectByName("project3");
+  window.project4 = scene.getObjectByName("Scene").getObjectByName("project4");
+  window.project5 = scene.getObjectByName("Scene").getObjectByName("project5");
+
 });
 
 

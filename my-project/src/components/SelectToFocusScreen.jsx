@@ -60,8 +60,6 @@ export default function SelectToFocusScreen(props) {
     }
 
 
-
-
     if (isPortalOpenReducer == false) {
         return ReactDom.createPortal(
             <>
