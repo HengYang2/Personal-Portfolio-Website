@@ -67,7 +67,7 @@ export default function SelectToFocusScreen(props) {
             <>
                 <div className=' fixed flex flex-row justify-center items-center gap-1 pb-36 w-screen h-screen bg-blue-500 opacity-30'>
 
-                    <div id="laptop" className='z-20 w-24 h-44 -ml-12 bg-red-500' onMouseEnter={(e) => { setDivId("Get In Touch") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('laptop'); cameraTween(props.camera, props.target, 'laptop'); window.globalVariable.position.set(0, 2, 0); }}>
+                    <div id="laptop" className='z-20 w-24 h-44 -ml-12 bg-red-500' onMouseEnter={(e) => { setDivId("Get In Touch") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('laptop'); cameraTween(props.camera, props.target, 'laptop');}}>
 
                     </div>
                     <div id="shelf" className='z-50 w-24 h-44 bg-red-500' onMouseEnter={(e) => { setDivId("Portfolio") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('shelf'); cameraTween(props.camera, props.target, 'shelf'); }}>
@@ -89,3 +89,5 @@ export default function SelectToFocusScreen(props) {
     }
 
 }
+
+// window.globalVariable.position.set(0, 2, 0); 

@@ -5,6 +5,7 @@ import ShelfView from './FocusViews/ShelfView'
 import MeView from './FocusViews/MeView'
 import DrawerView from './FocusViews/DrawerView'
 import { useSelector } from 'react-redux'
+import ReactDom from 'react-dom'
 
 
 export default function FocusedInScreen(props) {
@@ -33,10 +34,10 @@ export default function FocusedInScreen(props) {
   }
 
 
-  return (
+  return ReactDom.createPortal(
     <>
       {renderCurrentView()}
-    </>
+    </>, document.getElementById('portal')
   )
 }
 

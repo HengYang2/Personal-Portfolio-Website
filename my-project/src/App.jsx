@@ -41,7 +41,6 @@ export default function App(props) {
         return (
           <>
             <FocusedInScreen currentView={currentViewReducer} camera={props.camera} target={props.target} />
-             <div id="cursor" className='icon-tooltip'></div>
           </>
         )
       } else {

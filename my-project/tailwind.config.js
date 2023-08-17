@@ -19,7 +19,8 @@ export default {
         103: '25rem',
         104: '28rem',
         105: '29rem',
-        106: '29rem'
+        106: '29rem',
+        107: '28rem'
       },
       width: {
         999: '30px'
