@@ -18,37 +18,19 @@ export default function App(props) {
   //orbitControls that are passed in as props.controls.
   const dispatch = useDispatch();
   const setIsOrbitScreenOpen = (bool) => {
-    props.controls.enabled = false; 
+    props.controls.enabled = false;
     dispatch({ type: 'SET_ORBIT_SCREEN_OPEN', payload: bool });
     return;
   }
 
 
-  //For cursor following:
-  window.addEventListener("mousemove", (event) => {
-    const cursor = document.getElementById("cursor");
-    // const divImOn = cursor.;
-    // console.log('coords', e.clientX + " + " + e.clientY )
-    const x = event.clientX;
-    const y = event.clientY;
-    // cursor.style.left = x + 25 + "px";
-    // cursor.style.top = y + "px";
-  })
-
-  const renderToolTip = () => {
-    if (divId == '') {
-      return <div id="cursor"></div>
-    } else {
-      return <div id="cursor" className='icon-tooltip'>{divId}</div>
-    }
-  }
 
   //Conditionally render the SelectToFocusScreen or the FocusedInScreen:
   const renderView = () => {
     //Loads screen where the user can use orbital controls:
-    console.log(isOrbitScreenOpenReudcer);
     if (isOrbitScreenOpenReudcer == true) {
-      return <div className=" w-1/2 h-1/2 text-option flex justify-center items-center" onClick={() => { setIsOrbitScreenOpen(false); console.log("SETTING isOrbitScreenOpen to false."); cameraTween(props.camera, props.target, '')}}>Explore Room</div>;
+      // console.log(isOrbitScreenOpenReudcer);
+      return <button className=" w-1/2 h-1/2 text-option flex justify-center items-center" onClick={() => { setIsOrbitScreenOpen(false); console.log("SETTING isOrbitScreenOpen to false."); cameraTween(props.camera, props.target, '') }}>Explore Room</button>
     } else {
 
       //If isOrbitalScreenReducer == false, orbital controls will be disabled and 
@@ -59,18 +41,15 @@ export default function App(props) {
         return (
           <>
             <FocusedInScreen currentView={currentViewReducer} camera={props.camera} target={props.target} />
-            <div id="cursor"></div>
+             <div id="cursor" className='icon-tooltip'></div>
           </>
         )
       } else {
         return (
           <>
-            <SelectToFocusScreen camera={props.camera} target={props.target} setDivId={setDivId} controls={props.controls} />
-            {renderToolTip()}
+            <SelectToFocusScreen camera={props.camera} target={props.target} setDivId={setDivId} divId={divId} controls={props.controls} />
           </>
         )
-
-
       }
     }
   }

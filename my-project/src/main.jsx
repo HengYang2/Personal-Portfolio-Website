@@ -11,12 +11,11 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 //redux
 import { Provider } from 'react-redux';
 import store from './redux/store';
-// (8, 4.25, 8);
-// (3, 4.25, 3);
+
+
 //Camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(10, 6, 10);
-
 
 //Scene - like a containter that holds all objects, cameras and lights
 const scene = new THREE.Scene();
@@ -27,7 +26,6 @@ scene.background = backgroundTexture;
 scene.backgroundIntensity = 0.2;
 scene.backgroundBlurriness = 0.9;
 
-
 //Renderer
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
@@ -36,8 +34,6 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 renderer.render(scene, camera);
-
-
 
 // const axesHelper = new THREE.AxesHelper(8);
 // scene.add(axesHelper)

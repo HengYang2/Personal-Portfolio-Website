@@ -39,3 +39,5 @@ export default function FocusedInScreen(props) {
     </>
   )
 }
+
+{/* <div id="cursor"></div>  <----- PUT THIS IN EACH VIEW COMPONENET! */}
