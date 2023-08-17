@@ -11,6 +11,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 //redux
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { render } from 'react-dom'
 
 
 //Camera
@@ -21,10 +22,11 @@ camera.position.set(10, 6, 10);
 const scene = new THREE.Scene();
 
 //Load background:
-const backgroundTexture = new THREE.TextureLoader().load('../public/backgroundTexture.jpg');
+const backgroundTexture = new THREE.TextureLoader().load('../public/skyPhoto1.jpg');
 scene.background = backgroundTexture;
-scene.backgroundIntensity = 0.2;
-scene.backgroundBlurriness = 0.9;
+scene.backgroundIntensity = 0.3;
+scene.backgroundBlurriness = 0.5;
+
 
 //Renderer
 const renderer = new THREE.WebGLRenderer({
@@ -32,6 +34,7 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
+// renderer.shadowMapEnabled = true;
 
 renderer.render(scene, camera);
 
@@ -44,16 +47,24 @@ target.position.set(0, 2, 0)
 scene.add(target)
 
 
-//Add a light to the scene:
+//Scene Lights:
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(0, 3, 0)
 pointLight.intensity = 2;
-//Ambient light is like a flood light (it will light up everything in the scene equally):
+
 const ambientLight = new THREE.AmbientLight(0xffffff);
 ambientLight.intensity = 2;
 
+const hemisphereLight = new THREE.HemisphereLight(0x87CEEB, 0x32CD32, 0.05);
+
+const directionalLight = new THREE.DirectionalLight(0xFFFF00, 0.25);
+directionalLight.position.set(0,15,-5);
+directionalLight.target.position.set(0,2,0);
+
+
+
 //Add the light to the scene
-scene.add(pointLight, ambientLight);
+scene.add(pointLight, ambientLight, hemisphereLight, directionalLight);
 
 //Light helper shows where the light is and its position:
 // const lightHelper = new THREE.PointLightHelper(pointLight);
