@@ -4,11 +4,11 @@ import * as THREE from 'three'
 import SelectToFocusScreen from './components/SelectToFocusScreen';
 import FocusedInScreen from './components/FocusedInScreen/FocusedInScreen';
 import { degToRad } from 'three/src/math/MathUtils';
-
+import cameraTween from './tween/cameraTween';
 
 export default function App(props) {
 
-  const [divId, setDivId] = useState("About Me")
+  const [divId, setDivId] = useState("");
 
   const isFocusedReducer = useSelector(store => store.isFocusedReducer);
   const currentViewReducer = useSelector(store => store.currentViewReducer);
@@ -48,7 +48,7 @@ export default function App(props) {
     //Loads screen where the user can use orbital controls:
     console.log(isOrbitScreenOpenReudcer);
     if (isOrbitScreenOpenReudcer == true) {
-      return <div className=" w-1/2 h-1/2 text-option flex justify-center items-center" onClick={() => { setIsOrbitScreenOpen(false); console.log("SETTING isOrbitScreenOpen to false."); }}>Explore Room</div>;
+      return <div className=" w-1/2 h-1/2 text-option flex justify-center items-center" onClick={() => { setIsOrbitScreenOpen(false); console.log("SETTING isOrbitScreenOpen to false."); cameraTween(props.camera, props.target, '')}}>Explore Room</div>;
     } else {
 
       //If isOrbitalScreenReducer == false, orbital controls will be disabled and 

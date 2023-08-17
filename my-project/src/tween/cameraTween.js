@@ -8,7 +8,33 @@ import { useSelector } from 'react-redux';
 //reducer state is given:
 export default function cameraTween(camera, target, selectedTarget) {
 
-  // const targetReducer = useSelector((store) => {store.targetReducer});
+  const tweenFreeLook = () => {
+
+    const tweenCamera = new TWEEN.Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
+      .to({ x: 10, y: 6, z: 10 }, 3000)
+      .onUpdate((coords) => {
+        camera.position.x = coords.x
+        camera.position.y = coords.y
+        camera.position.z = coords.z
+      })
+      .easing(TWEEN.Easing.Exponential.InOut)
+      .repeat(0)
+      .delay(10);
+
+    const tweenTarget = new TWEEN.Tween({ x: target.position.x, y: target.position.y, z: target.position.z })
+      .to({ x: 0, y: 2, z: 0 }, 3000)
+      .onUpdate((coords) => {
+        target.position.x = coords.x
+        target.position.y = coords.y
+        target.position.z = coords.z
+      })
+      .easing(TWEEN.Easing.Exponential.InOut)
+      .repeat(0)
+      .delay(10);
+
+    tweenCamera.start();
+    tweenTarget.start();
+  }
 
   const tweenLaptop = () => {
 
@@ -24,7 +50,7 @@ export default function cameraTween(camera, target, selectedTarget) {
       .delay(10);
 
     const tweenTarget = new TWEEN.Tween({ x: target.position.x, y: target.position.y, z: target.position.z })
-      .to({ x: -5, y: 1, z: 3 }, 1500)
+      .to({ x: -5, y: 1, z: 3 }, 3000)
       .onUpdate((coords) => {
         target.position.x = coords.x
         target.position.y = coords.y
@@ -132,7 +158,7 @@ export default function cameraTween(camera, target, selectedTarget) {
   const tweenBack = () => {
 
     const tweenCamera = new TWEEN.Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
-    .to({x: 5.5, y: 3, z: 6  }, 3000)
+    .to({x: 6, y: 4.5, z: 6  }, 3000)
     .onUpdate((coords) => {
       camera.position.x = coords.x
       camera.position.y = coords.y
@@ -161,6 +187,9 @@ export default function cameraTween(camera, target, selectedTarget) {
 
 
   switch (selectedTarget) {
+    case 'freeLook':
+      return tweenFreeLook();
+      break;
     case 'laptop':
       return tweenLaptop();
       break;
