@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 // import user from './user.reducer';
 import isFocusedReducer from './isFocusedReducer';
 import currentViewReducer from './currentViewReducer';
+import isOrbitScreenOpenReudcer from './isOrbitScreenOpenReudcer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -13,6 +14,7 @@ import currentViewReducer from './currentViewReducer';
 const rootReducer = combineReducers({
     isFocusedReducer,
     currentViewReducer,
+    isOrbitScreenOpenReudcer,
 });
 
 export default rootReducer;

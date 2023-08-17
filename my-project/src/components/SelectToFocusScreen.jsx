@@ -22,9 +22,9 @@ export default function SelectToFocusScreen(props) {
 
 
     return (
-        <div className=' flex flex-row justify-center items-center gap-1 pb-16 w-full h-full z-10'>
+        <div className=' absolute flex flex-row justify-center items-center gap-1 pb-16 w-screen h-screen z-30 bg-blue-500 opacity-30'>
 
-            <div id="laptop" className='z-20 w-24 h-44 -ml-12' onMouseEnter={ (e) => {setDivId("Get In Touch")}} onMouseLeave={ (e) => {setDivId("")}}  onClick={() => { setIsFocused(true); setCurrentView('laptop'); cameraTween(props.camera, props.target, 'laptop'); window.globalVariable.position.set(0,2,0)}}>
+            <div id="laptop" className='z-20 w-24 h-44 -ml-12' onMouseEnter={ (e) => {setDivId("Get In Touch")}} onMouseLeave={ (e) => {setDivId("")}}  onClick={() => { setIsFocused(true); setCurrentView('laptop'); cameraTween(props.camera, props.target, 'laptop'); window.globalVariable.position.set(0,2,0);}}>
                
             </div>
             <div id="shelf" className='z-50 w-24 h-44 ' onMouseEnter={ (e) => {setDivId("Portfolio")}} onMouseLeave={ (e) => {setDivId("")}} onClick={() => { setIsFocused(true); setCurrentView('shelf'); cameraTween(props.camera, props.target, 'shelf'); }}>

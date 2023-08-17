@@ -81,15 +81,15 @@ gltfLoader.load('../public/bedroomMODIFIED.gltf', (gltfscene) => {
 
 
 //OrbitControls: This listens to DOM events on the mouse and positions the camera accordingly:
-const controls = new OrbitControls(camera, renderer.domElement).target(new THREE.Vector3(0,4,0));
+const controls = new OrbitControls(camera, renderer.domElement);
 
 
 //ensure tween is running
 const animate = (t) => {
   controls.update();
-  // TWEEN.update(t);
+  TWEEN.update(t);
   requestAnimationFrame(animate);
-  // camera.lookAt(target.position);
+  camera.lookAt(target.position);
   renderer.render(scene, camera);
   // scene.getObjectByName("Scene").getObjectByName("Cube042").position.set(0,0,0);
   // console.log("window var", window.globalVariable);
@@ -103,7 +103,7 @@ animate();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App target={target} camera={camera} scene={scene} />
+      <App target={target} camera={camera} scene={scene} controls={controls}/>
     </Provider>
   </React.StrictMode>,
 )
