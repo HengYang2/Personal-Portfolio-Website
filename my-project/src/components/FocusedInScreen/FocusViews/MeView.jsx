@@ -18,7 +18,9 @@ export default function MeView(props) {
 
   const [collectionIndex, setCollectionIndex] = useState(0);
 
-  const [textSpeed, setTextSpeed] = useState(25);
+  const defaultTextSpeedValue = 10
+  const spedUpTextSpeedValue = 0.0005
+  const [textSpeed, setTextSpeed] = useState(defaultTextSpeedValue);
 
   const [indicatorVisible, setIndicatorVisible] = useState(false);
 
@@ -42,13 +44,15 @@ export default function MeView(props) {
   //For handling user clicks and conditional rendering of components:
   function nextText() {
     if (indicatorVisible == true) {
+      console.log("Speed set to 25");
       if (collectionIndex != textCollection.length - 1) {
         setCollectionIndex(collectionIndex + 1)
       }
       setIndicatorVisible(false)
-      setTextSpeed(200)
+      setTextSpeed(defaultTextSpeedValue)
     } else {
-      setTextSpeed(0.5)
+      console.log("Speed set to 0.0005");
+      setTextSpeed(spedUpTextSpeedValue)
     }
   }
 
@@ -62,9 +66,9 @@ export default function MeView(props) {
     return questionsVisable ?
       <div className='w-40 h-36 ml-90 mt-40 absolute flex flex-col justify-center gap-1 items-center'>
         <div className='bg-yellow-100 absolute w-full h-full border border-black rounded-md box-shadow animate-subtlePulse -z-1 opacity-70'></div>
-        <button className='text-option' id='option1' onClick={e => { setQuestionsVisable(false); setSelectedQuestion('option1'); setTextCollection(responseModule('option1')); setCollectionIndex(0); setTextSpeed(50); setClickBlockerDiv(false) }}>Who are you?</button>
-        <button className='text-option' id='option2' onClick={e => { setQuestionsVisable(false); setSelectedQuestion('option2'); setTextCollection(responseModule('option2')); setCollectionIndex(0); setTextSpeed(50); setClickBlockerDiv(false) }}>Where am I?</button>
-        <button className='text-option' id='option3' onClick={e => { setQuestionsVisable(false); setSelectedQuestion('option3'); setTextCollection(responseModule('option3')); setCollectionIndex(0); setTextSpeed(50); setClickBlockerDiv(false) }}>What do you do for fun?</button>
+        <button className='text-option' id='option1' onClick={e => { setQuestionsVisable(false); setSelectedQuestion('option1'); setTextCollection(responseModule('option1')); setCollectionIndex(0); setTextSpeed(defaultTextSpeedValue); setClickBlockerDiv(false) }}>Who are you?</button>
+        <button className='text-option' id='option2' onClick={e => { setQuestionsVisable(false); setSelectedQuestion('option2'); setTextCollection(responseModule('option2')); setCollectionIndex(0); setTextSpeed(defaultTextSpeedValue); setClickBlockerDiv(false) }}>Where am I?</button>
+        <button className='text-option' id='option3' onClick={e => { setQuestionsVisable(false); setSelectedQuestion('option3'); setTextCollection(responseModule('option3')); setCollectionIndex(0); setTextSpeed(defaultTextSpeedValue); setClickBlockerDiv(false) }}>What do you do for fun?</button>
       </div> :
       <></>;
   }
