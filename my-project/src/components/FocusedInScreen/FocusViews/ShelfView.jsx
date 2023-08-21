@@ -51,7 +51,7 @@ export default function ShelfView(props) {
       <div className='w-full h-full absolute flex flex-col justify-center items-center'>
         <div className='w-3/5 h-full  flex flex-col justify-center items-center opacity-25 pb-28'>
           <div className='w-full h-1/2 mt-5 flex flex-row justify-center items-center opacity-60'>
-            <div className='h-full w-1/5 ' onMouseEnter={(e) => { trophyTween(project1); setHoveredDiv('Solo Project: Know Your Hours'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
+            <a className='h-full w-1/5 ' href='https://whispering-wildwood-53168-a5c709a25715.herokuapp.com/' target='_blank' onMouseEnter={(e) => { trophyTween(project1); setHoveredDiv('Solo Project: Know Your Hours'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></a>
             <div className='h-full w-1/5 ' onMouseEnter={(e) => { trophyTween(project2); setHoveredDiv('In Progress'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
             <div className='h-full w-1/5 ' onMouseEnter={(e) => { trophyTween(project3); setHoveredDiv('In Progress'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
             <div className='h-full w-1/5 ' onMouseEnter={(e) => { trophyTween(project4); setHoveredDiv('In Progress'); }} onMouseLeave={(e) => { setHoveredDiv('') }}></div>
