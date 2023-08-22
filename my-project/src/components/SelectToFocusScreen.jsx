@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import cameraTween from '../tween/cameraTween';
 import ReactDom from 'react-dom';
 
+
 //The purpose of this component is to display invisible divs over parts of the room;
 //Which when clicked zooms the camera to focus in on that thing. Ex: the Shelf.
 export default function SelectToFocusScreen(props) {
@@ -37,7 +38,7 @@ export default function SelectToFocusScreen(props) {
         const cursor = document.getElementById("cursor");
 
         if (cursor) {
-            console.log('coords', event.clientX + " + " + event.clientY)
+            // console.log('coords', event.clientX + " + " + event.clientY)
             const x = event.clientX;
             const y = event.clientY;
             cursor.style.left = x + 10 + "px";
