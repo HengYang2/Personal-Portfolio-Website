@@ -65,7 +65,7 @@ export default function MeView(props) {
   function toggleQuestionsVisable() {
     return questionsVisable ?
       <div className='w-40 h-36 ml-90 mt-40 absolute flex flex-col justify-center gap-1 items-center'>
-        <div className='bg-yellow-100 absolute w-full h-full border border-black rounded-md box-shadow animate-subtlePulse -z-1 opacity-70'></div>
+        <div className='bg-blue-400 absolute w-full h-full border border-black rounded-md box-shadow animate-subtlePulse -z-1 opacity-70'></div>
         <button className='text-option' id='option1' onClick={e => { setQuestionsVisable(false); setSelectedQuestion('option1'); setTextCollection(responseModule('option1')); setCollectionIndex(0); setTextSpeed(defaultTextSpeedValue); setClickBlockerDiv(false) }}>Who are you?</button>
         <button className='text-option' id='option2' onClick={e => { setQuestionsVisable(false); setSelectedQuestion('option2'); setTextCollection(responseModule('option2')); setCollectionIndex(0); setTextSpeed(defaultTextSpeedValue); setClickBlockerDiv(false) }}>Where am I?</button>
         <button className='text-option' id='option3' onClick={e => { setQuestionsVisable(false); setSelectedQuestion('option3'); setTextCollection(responseModule('option3')); setCollectionIndex(0); setTextSpeed(defaultTextSpeedValue); setClickBlockerDiv(false) }}>What do you do for fun?</button>
@@ -85,16 +85,15 @@ export default function MeView(props) {
         {toggleQuestionsVisable()}
         <div className='relative w-3/4 h-44 ml-40 mt-80 flex flex-row justify-center gap-2 z-10'>
           {clickBlocker()}
-          <div className='bg-yellow-100 absolute w-full h-full border border-black rounded-md box-shadow animate-subtlePulse z-10 opacity-70'></div>
+          <div className='bg-blue-400 absolute w-full h-full border border-black rounded-md box-shadow animate-subtlePulse z-10 opacity-70'></div>
           <div className='left-.5 top-1.5 h-32 w-32 relative'>
             {imageModule(selectedQuestion)}
             <h1 className='bg-white border border-black relative rounded-md mt-1.5 text-center box-shadow z-20'>Heng Yang</h1>
           </div>
           <p onClick={() => { nextText() }} className='relative bg-white left-0 w-4/5 top-1.5 h-40 p-2 border border-black rounded-md box-shadow z-20'>{text}</p>
         </div>
-
       </div>
-      <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, ''); setDivId(''); }}>{"<-"}</button>
+      <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect opacity-100' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, ''); setDivId(''); }}>{"<-"}</button>
     </>
   )
 }

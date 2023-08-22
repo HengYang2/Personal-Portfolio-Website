@@ -20,12 +20,17 @@ export default {
         104: '28rem',
         105: '28rem',
         106: '30rem',
-        107: '28rem'
+        107: '28rem',
+
+        110: '16.5rem',
+        111: '5rem',
       },
       width: {
+        100: '489px',
         999: '30px'
       },
       height: {
+        100: '335px',
         999: '30px'
       },
       keyframes: {

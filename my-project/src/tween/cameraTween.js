@@ -42,7 +42,7 @@ export default function cameraTween(camera, target, selectedTarget) {
   const tweenLaptop = () => {
 
     const tweenCamera = new TWEEN.Tween({ x: camera.position.x, y: camera.position.y, z: camera.position.z })
-      .to({ x: -2, y: 3.25, z: 2.8 }, zoomInSpeed)
+      .to({ x: -3, y: 2.5, z: 2.76 }, zoomInSpeed)
       .onUpdate((coords) => {
         camera.position.x = coords.x
         camera.position.y = coords.y
@@ -53,7 +53,7 @@ export default function cameraTween(camera, target, selectedTarget) {
       .delay(10);
 
     const tweenTarget = new TWEEN.Tween({ x: target.position.x, y: target.position.y, z: target.position.z })
-      .to({ x: -5, y: 1, z: 2.8 }, zoomInSpeed)
+      .to({ x: -4.9, y: 2.5, z: 2.76 }, zoomInSpeed)
       .onUpdate((coords) => {
         target.position.x = coords.x
         target.position.y = coords.y

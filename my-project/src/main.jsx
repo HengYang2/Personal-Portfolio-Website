@@ -76,7 +76,7 @@ scene.add(pointLight, ambientLight, hemisphereLight, directionalLight);
 
 //Room Model:
 const gltfLoader = new GLTFLoader();
-gltfLoader.load('../public/bedroomMODIFIED.gltf', (gltfscene) => {
+gltfLoader.load('../public/bedroomMODIFIED2.gltf', (gltfscene) => {
 
   scene.add(gltfscene.scene);
   console.log("gltfscene", scene.getObjectByName("Scene"));
