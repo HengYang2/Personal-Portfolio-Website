@@ -1,15 +1,24 @@
 import React from 'react'
 import * as TWEEN from '@tweenjs/tween.js'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 //Needs to accept: 
 //Camera position
 //reducer state is given:
-export default function cameraTween(camera, target, selectedTarget) {
+export default function cameraTween(camera, target, selectedTarget, func) {
+
 
   const zoomInSpeed = 2000;
   const zoomOutSpeed = 2000;
+  func(false);
+ 
+  // const dispatch = useDispatch();
+  // const setIsAnimationFinished = (bool) => {
+  //   dispatch({ type: 'SET_IS_ANIMATION_FINISHED', payload: bool });
+  //   return;
+  // }
+
 
   const tweenFreeLook = () => {
 
@@ -37,6 +46,7 @@ export default function cameraTween(camera, target, selectedTarget) {
 
     tweenCamera.start();
     tweenTarget.start();
+    tweenCamera.onComplete(()=>{func(true)});
   }
 
   const tweenLaptop = () => {
@@ -65,6 +75,7 @@ export default function cameraTween(camera, target, selectedTarget) {
 
     tweenCamera.start();
     tweenTarget.start();
+    tweenCamera.onComplete(()=>{func(true)});
   }
 
 
@@ -95,6 +106,7 @@ export default function cameraTween(camera, target, selectedTarget) {
 
     tweenCamera.start();
     tweenTarget.start();
+    tweenCamera.onComplete(()=>{func(true)});
   }
 
 
@@ -125,6 +137,7 @@ export default function cameraTween(camera, target, selectedTarget) {
 
     tweenCamera.start();
     tweenTarget.start();
+    tweenCamera.onComplete(()=>{func(true)});
   }
 
 
@@ -155,6 +168,7 @@ export default function cameraTween(camera, target, selectedTarget) {
 
     tweenCamera.start();
     tweenTarget.start();
+    tweenCamera.onComplete(()=>{func(true)});
   }
 
 
@@ -185,6 +199,7 @@ export default function cameraTween(camera, target, selectedTarget) {
 
     tweenCamera.start();
     tweenTarget.start();
+    tweenCamera.onComplete(()=>{func(true)});
   }
   
 

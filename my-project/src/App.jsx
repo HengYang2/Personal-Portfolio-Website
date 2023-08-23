@@ -13,6 +13,7 @@ export default function App(props) {
   const isFocusedReducer = useSelector(store => store.isFocusedReducer);
   const currentViewReducer = useSelector(store => store.currentViewReducer);
   const isOrbitScreenOpenReudcer = useSelector(store => store.isOrbitScreenOpenReudcer);
+  const isAnimationFinishedReducer = useSelector(store => store.isAnimationFinishedReducer);
 
   //Function for changing isOrbitScreenOpenReducer value and disabling
   //orbitControls that are passed in as props.controls.
@@ -22,33 +23,42 @@ export default function App(props) {
     dispatch({ type: 'SET_ORBIT_SCREEN_OPEN', payload: bool });
     return;
   }
-
+  const setIsAnimationFinished = (bool) => {
+    dispatch({ type: 'SET_IS_ANIMATION_FINISHED', payload: bool });
+    return;
+  }
 
 
   //Conditionally render the SelectToFocusScreen or the FocusedInScreen:
   const renderView = () => {
-    //Loads screen where the user can use orbital controls:
-    if (isOrbitScreenOpenReudcer == true) {
-      // console.log(isOrbitScreenOpenReudcer);
-      return <button className=" w-1/2 h-1/2 text-option flex justify-center items-center" onClick={() => { setIsOrbitScreenOpen(false); console.log("SETTING isOrbitScreenOpen to false."); cameraTween(props.camera, props.target, '') }}>Explore Room</button>
+    //Divs won't render in untill after camera tweening animations are finished:
+    if (isAnimationFinishedReducer == false) {
+      return <></>
     } else {
-
-      //If isOrbitalScreenReducer == false, orbital controls will be disabled and 
-      //SelectToFocusScreen will be rendered.
-      //If isFocusedReducer == true, the FocusedInScreen will be rendered instead of
-      //the SelectToFocusScreen.
-      if (isFocusedReducer == true) {
-        return (
-          <>
-            <FocusedInScreen currentView={currentViewReducer} camera={props.camera} target={props.target} setDivId={setDivId} />
-          </>
-        )
+      //Loads screen where the user can use orbital controls:
+      if (isOrbitScreenOpenReudcer == true) {
+        // console.log(isOrbitScreenOpenReudcer);
+        return <button className=" w-1/2 h-1/2 text-option flex justify-center items-center" onClick={() => { setIsOrbitScreenOpen(false); cameraTween(props.camera, props.target, '', setIsAnimationFinished); }}>Explore Room</button>
       } else {
-        return (
-          <>
-            <SelectToFocusScreen camera={props.camera} target={props.target} setDivId={setDivId} divId={divId} controls={props.controls} />
-          </>
-        )
+
+        //If isOrbitalScreenReducer == false, orbital controls will be disabled and 
+        //SelectToFocusScreen will be rendered.
+        //If isFocusedReducer == true, the FocusedInScreen will be rendered instead of
+        //the SelectToFocusScreen.
+
+        if (isFocusedReducer == true) {
+          return (
+            <>
+              <FocusedInScreen currentView={currentViewReducer} camera={props.camera} target={props.target} setDivId={setDivId} />
+            </>
+          )
+        } else {
+          return (
+            <>
+              <SelectToFocusScreen camera={props.camera} target={props.target} setDivId={setDivId} divId={divId} controls={props.controls} />
+            </>
+          )
+        }
       }
     }
   }

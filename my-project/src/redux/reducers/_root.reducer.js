@@ -5,6 +5,7 @@ import isFocusedReducer from './isFocusedReducer';
 import currentViewReducer from './currentViewReducer';
 import isOrbitScreenOpenReudcer from './isOrbitScreenOpenReudcer';
 import isPortalOpenReducer from './isPortalOpenReducer';
+import isAnimationFinishedReducer from './isAnimationFinishedReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     currentViewReducer,
     isOrbitScreenOpenReudcer,
     isPortalOpenReducer,
+    isAnimationFinishedReducer,
 });
 
 export default rootReducer;

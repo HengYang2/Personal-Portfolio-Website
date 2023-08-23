@@ -40,6 +40,11 @@ export default function MeView(props) {
     dispatch({ type: 'SET_CURRENT_VIEW', payload: selectedView });
     return;
   }
+  const setIsAnimationFinished = (bool) => {
+    dispatch({ type: 'SET_IS_ANIMATION_FINISHED', payload: bool });
+    return;
+  }
+
 
   //For handling user clicks and conditional rendering of components:
   function nextText() {
@@ -93,7 +98,7 @@ export default function MeView(props) {
           <p onClick={() => { nextText() }} className='relative bg-white left-0 w-4/5 top-1.5 h-40 p-2 border border-black rounded-md box-shadow z-20'>{text}</p>
         </div>
       </div>
-      <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect opacity-100' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, ''); setDivId(''); }}>{"<-"}</button>
+      <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect opacity-100' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, '', setIsAnimationFinished); setDivId(''); }}>{"<-"}</button>
     </>
   )
 }

@@ -18,13 +18,17 @@ export default function LaptopView(props) {
     dispatch({ type: 'SET_CURRENT_VIEW', payload: selectedView });
     return;
   }
+  const setIsAnimationFinished = (bool) => {
+    dispatch({ type: 'SET_IS_ANIMATION_FINISHED', payload: bool });
+    return;
+  }
 
   const renderResumeOrEmail = () => {
     if (resumeOrEmail == 'resume') {
       return <iframe src='../../../../public/resume/tempResume.pdf#toolbar=0' className='absolute z-50 bg-black h-100 w-100 ml-110 mt-111'></iframe>
     } else if (resumeOrEmail == 'email') {
       return (
-        <Contact/>
+        <Contact />
       )
     } else {
       return <></>
@@ -34,12 +38,12 @@ export default function LaptopView(props) {
   return (
     <>
       <div className='w-screen h-screen fixed mt-0 ml-0 bg-black opacity-50 -z-1'></div>
-      <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, ''); setDivId(''); }}>{"<-"}</button>
+      <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, '', setIsAnimationFinished); setDivId(''); }}>{"<-"}</button>
       <div className='ml-96 w-full h-full absolute flex flex-col justify-center items-center'>
         <div className='flex flex-col gap-1 justify-center items-center bg-blue-400 h-1/3 w-1/5 z-20 border-black rounded-md border'>
           <a href='https://www.linkedin.com/in/heng-yang-97109b1b1/' target='_blank' className='bg-white h-12 w-3/4  flex justify-center items-center border-black rounded-md border hover:border hover:border-white hover:text-white text-sm box-shadow button-hover-effect'>LinkedIn</a>
-          <div onClick={()=>{setResumeOrEmail('resume')}} target='_blank' className='bg-white h-12 w-3/4  flex justify-center items-center border-black rounded-md border hover:border hover:border-white hover:text-white text-sm box-shadow button-hover-effect'>Resume</div>
-          <div onClick={()=>{setResumeOrEmail('email')}} className='bg-white h-12 w-3/4  flex justify-center items-center border-black rounded-md border hover:border hover:border-white hover:text-white text-sm box-shadow button-hover-effect'>Send Email</div>
+          <div onClick={() => { setResumeOrEmail('resume') }} target='_blank' className='bg-white h-12 w-3/4  flex justify-center items-center border-black rounded-md border hover:border hover:border-white hover:text-white text-sm box-shadow button-hover-effect'>Resume</div>
+          <div onClick={() => { setResumeOrEmail('email') }} className='bg-white h-12 w-3/4  flex justify-center items-center border-black rounded-md border hover:border hover:border-white hover:text-white text-sm box-shadow button-hover-effect'>Send Email</div>
         </div>
       </div>
       {renderResumeOrEmail()}

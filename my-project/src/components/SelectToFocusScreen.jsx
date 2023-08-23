@@ -31,6 +31,10 @@ export default function SelectToFocusScreen(props) {
         dispatch({ type: 'SET_PORTAL_OPEN', payload: bool });
         return;
     }
+    const setIsAnimationFinished = (bool) => {
+        dispatch({ type: 'SET_IS_ANIMATION_FINISHED', payload: bool });
+        return;
+      }
 
     //For cursor following:
     window.addEventListener("mousemove", (event) => {
@@ -50,7 +54,7 @@ export default function SelectToFocusScreen(props) {
 
 
     const renderToolTip = () => {
-        console.log(props.divId);
+        // console.log(props.divId);
         if (props.divId == '') {
             return <div id="cursor"></div>
         } else {
@@ -64,20 +68,20 @@ export default function SelectToFocusScreen(props) {
             <>
                 <div className=' fixed flex flex-row justify-center items-center gap-1 pb-36 w-screen h-screen'>
 
-                    <div id="laptop" className='z-20 w-24 h-44 -ml-12' onMouseEnter={(e) => { setDivId("Get In Touch") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('laptop'); cameraTween(props.camera, props.target, 'laptop');}}>
+                    <div id="laptop" className='z-20 w-24 h-44 -ml-12' onMouseEnter={(e) => { setDivId("Get In Touch") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('laptop'); cameraTween(props.camera, props.target, 'laptop', setIsAnimationFinished);}}>
 
                     </div>
-                    <div id="shelf" className='z-50 w-24 h-44' onMouseEnter={(e) => { setDivId("Portfolio") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('shelf'); cameraTween(props.camera, props.target, 'shelf'); }}>
+                    <div id="shelf" className='z-50 w-24 h-44' onMouseEnter={(e) => { setDivId("Portfolio") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('shelf'); cameraTween(props.camera, props.target, 'shelf', setIsAnimationFinished); }}>
 
                     </div>
-                    <div id="me" className='z-50 w-24 h-44' onMouseEnter={(e) => { setDivId("About Me") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('me'); cameraTween(props.camera, props.target, 'me'); }}>
+                    <div id="me" className='z-50 w-24 h-44' onMouseEnter={(e) => { setDivId("About Me") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('me'); cameraTween(props.camera, props.target, 'me', setIsAnimationFinished); }}>
 
                     </div>
-                    <div id="drawer" className='z-50 w-24 h-44' onMouseEnter={(e) => { setDivId("Misc") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('drawer'); cameraTween(props.camera, props.target, 'drawer'); }}>
+                    <div id="drawer" className='z-50 w-24 h-44' onMouseEnter={(e) => { setDivId("Misc") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('drawer'); cameraTween(props.camera, props.target, 'drawer', setIsAnimationFinished); }}>
 
                     </div>
                 </div>
-                <button className=" w-24 h-16 ml-105 mt-106 text-option absolute flex justify-center items-center" onClick={() => { setIsOrbitScreenOpen(true); setIsPortalOpenReducer(false); cameraTween(props.camera, props.target, 'freeLook') }}>Free-Look</button>
+                <button className=" w-24 h-16 ml-105 mt-106 text-option absolute flex justify-center items-center" onClick={() => { setIsOrbitScreenOpen(true); setIsPortalOpenReducer(false); cameraTween(props.camera, props.target, 'freeLook', setIsAnimationFinished) }}>Free-Look</button>
                 {renderToolTip()}
             </>, document.getElementById('portal')
         )

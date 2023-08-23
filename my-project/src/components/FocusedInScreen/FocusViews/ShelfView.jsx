@@ -17,6 +17,10 @@ export default function ShelfView(props) {
     dispatch({ type: 'SET_CURRENT_VIEW', payload: selectedView });
     return;
   }
+  const setIsAnimationFinished = (bool) => {
+    dispatch({ type: 'SET_IS_ANIMATION_FINISHED', payload: bool });
+    return;
+  }
 
   //For cursor following:
   window.addEventListener("mousemove", (event) => {
@@ -47,7 +51,7 @@ export default function ShelfView(props) {
 
   return (
     <>
-      <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, ''); setDivId(''); }}>{"<-"}</button>
+      <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, '', setIsAnimationFinished); setDivId(''); }}>{"<-"}</button>
       <div className='w-full h-full absolute flex flex-col justify-center items-center'>
         <div className='w-3/5 h-full  flex flex-col justify-center items-center opacity-25 pb-28'>
           <div className='w-full h-1/2 mt-5 flex flex-row justify-center items-center opacity-60'>
