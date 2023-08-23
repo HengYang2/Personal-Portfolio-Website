@@ -11,7 +11,7 @@ export default function SelectToFocusScreen(props) {
     const setDivId = props.setDivId;
 
     const isPortalOpenReducer = useSelector(store => store.isPortalOpenReducer);
-    
+
 
     const dispatch = useDispatch();
     const setIsFocused = (bool) => {
@@ -34,7 +34,7 @@ export default function SelectToFocusScreen(props) {
     const setIsAnimationFinished = (bool) => {
         dispatch({ type: 'SET_IS_ANIMATION_FINISHED', payload: bool });
         return;
-      }
+    }
 
     //For cursor following:
     window.addEventListener("mousemove", (event) => {
@@ -68,17 +68,17 @@ export default function SelectToFocusScreen(props) {
             <>
                 <div className=' fixed flex flex-row justify-center items-center gap-1 pb-36 w-screen h-screen'>
 
-                    <div id="laptop" className='z-20 w-24 h-44 -ml-12' onMouseEnter={(e) => { setDivId("Get In Touch") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('laptop'); cameraTween(props.camera, props.target, 'laptop', setIsAnimationFinished);}}>
-
+                    <div id="laptop" className='z-20 w-24 h-44 -ml-12 hover:border-2 border-white rounded-md' onMouseEnter={(e) => { setDivId("Get In Touch") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('laptop'); cameraTween(props.camera, props.target, 'laptop', setIsAnimationFinished); }}>
+                        <div className='hover:bg-blue-300 w-full h-full opacity-20'></div>
                     </div>
-                    <div id="shelf" className='z-50 w-24 h-44' onMouseEnter={(e) => { setDivId("Portfolio") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('shelf'); cameraTween(props.camera, props.target, 'shelf', setIsAnimationFinished); }}>
-
+                    <div id="shelf" className='z-50 w-24 h-44 hover:border-2 border-white rounded-md' onMouseEnter={(e) => { setDivId("Portfolio") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('shelf'); cameraTween(props.camera, props.target, 'shelf', setIsAnimationFinished); }}>
+                        <div className='hover:bg-blue-300 w-full h-full opacity-20'></div>
                     </div>
-                    <div id="me" className='z-50 w-24 h-44' onMouseEnter={(e) => { setDivId("About Me") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('me'); cameraTween(props.camera, props.target, 'me', setIsAnimationFinished); }}>
-
+                    <div id="me" className='z-50 w-24 h-44 hover:border-2 border-white rounded-md' onMouseEnter={(e) => { setDivId("About Me") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('me'); cameraTween(props.camera, props.target, 'me', setIsAnimationFinished); }}>
+                        <div className='hover:bg-blue-300 w-full h-full opacity-20'></div>
                     </div>
-                    <div id="drawer" className='z-50 w-24 h-44' onMouseEnter={(e) => { setDivId("Misc") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('drawer'); cameraTween(props.camera, props.target, 'drawer', setIsAnimationFinished); }}>
-
+                    <div id="drawer" className='z-50 w-24 h-44 hover:border-2 border-white rounded-md' onMouseEnter={(e) => { setDivId("Misc") }} onMouseLeave={(e) => { setDivId("") }} onClick={() => { setIsFocused(true); setCurrentView('drawer'); cameraTween(props.camera, props.target, 'drawer', setIsAnimationFinished); }}>
+                        <div className='hover:bg-blue-300 w-full h-full opacity-20'></div>
                     </div>
                 </div>
                 <button className=" w-24 h-16 ml-105 mt-106 text-option absolute flex justify-center items-center" onClick={() => { setIsOrbitScreenOpen(true); setIsPortalOpenReducer(false); cameraTween(props.camera, props.target, 'freeLook', setIsAnimationFinished) }}>Free-Look</button>
