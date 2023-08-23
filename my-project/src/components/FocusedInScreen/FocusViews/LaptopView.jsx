@@ -36,10 +36,10 @@ export default function LaptopView(props) {
   }
 
   return (
-    <>
-      <div className='w-screen h-screen fixed mt-0 ml-0 bg-black opacity-50 -z-1'></div>
+    <div className='h-screen w-screen fixed'>
+      <div className='w-full h-full fixed mt-0 ml-0 bg-black opacity-50 -z-1 '></div>
       <button className=' text-black w-24 h-24  border border-black rounded-md bg-yellow-300 absolute mt-107 ml-8 z-20 hover:border hover:border-white hover:text-white button-hover-effect' onClick={() => { setIsFocused(false); setCurrentView(''); cameraTween(props.camera, props.target, '', setIsAnimationFinished); setDivId(''); }}>{"<-"}</button>
-      <div className='ml-96 w-full h-full absolute flex flex-col justify-center items-center'>
+      <div className='ml-96 w-full h-full absolute flex flex-col justify-center items-center overflow-hidden'>
         <div className='flex flex-col gap-1 justify-center items-center bg-blue-400 h-1/3 w-1/5 z-20 border-black rounded-md border'>
           <a href='https://www.linkedin.com/in/heng-yang-97109b1b1/' target='_blank' className='bg-white h-12 w-3/4  flex justify-center items-center border-black rounded-md border hover:border hover:border-white hover:text-white text-sm box-shadow button-hover-effect'>LinkedIn</a>
           <div onClick={() => { setResumeOrEmail('resume') }} target='_blank' className='bg-white h-12 w-3/4  flex justify-center items-center border-black rounded-md border hover:border hover:border-white hover:text-white text-sm box-shadow button-hover-effect'>Resume</div>
@@ -47,7 +47,7 @@ export default function LaptopView(props) {
         </div>
       </div>
       {renderResumeOrEmail()}
-    </>
+    </div>
   )
 }
 

@@ -24,6 +24,9 @@ export default {
 
         110: '16.5rem',
         111: '5rem',
+
+        112: '49rem',
+
       },
       width: {
         100: '489px',

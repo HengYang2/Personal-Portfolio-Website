@@ -38,7 +38,12 @@ export default function App(props) {
       //Loads screen where the user can use orbital controls:
       if (isOrbitScreenOpenReudcer == true) {
         // console.log(isOrbitScreenOpenReudcer);
-        return <button className=" w-1/2 h-1/2 text-option flex justify-center items-center" onClick={() => { setIsOrbitScreenOpen(false); cameraTween(props.camera, props.target, '', setIsAnimationFinished); }}>Explore Room</button>
+        return(
+          <>
+          <h1 className='bg-white p-2 w-full h-3/4 ml-112 absolute flex flex-row justify-center items-center text-center rounded-md border-black border box-shadow text-xs animate-upDown2'>Try clicking and dragging for a 360 view of the scene!</h1>
+         <button className=" w-1/2 h-1/2 text-option flex justify-center items-center" onClick={() => { setIsOrbitScreenOpen(false); cameraTween(props.camera, props.target, '', setIsAnimationFinished); }}>Explore Room</button>
+          </>
+        )
       } else {
 
         //If isOrbitalScreenReducer == false, orbital controls will be disabled and 
